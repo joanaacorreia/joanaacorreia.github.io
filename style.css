@@ -91,6 +91,31 @@ body {
 }
 
 
+.title {
+    position: absolute;
+    top: 33%;
+    text-align: center;
+    pointer-events: none; 
+    z-index: 5;
+}
+
+.title h1 {
+    font-family: var(--font-heading);
+    font-size: clamp(2rem, 7vw, 4.5rem);
+    color: var(--color-green);
+    margin-bottom: 1rem;
+    text-shadow:
+        0 0 10px var(--color-green-glow),
+        0 0 20px var(--color-green-glow);
+}
+
+.title p {
+    font-family: var(--font-body);
+    font-size: 1.25rem;
+    color: rgba(209, 250, 229, 0.8);
+}
+
+
 .ground {
     flex-shrink: 0;       
     height: var(--ground-height);
