@@ -6,6 +6,8 @@
     --color-pink-glow: rgba(244, 114, 182, 0.8);
     --color-green: #34d399;
     --color-green-glow: rgba(52, 211, 153, 0.8);
+
+    --ground-height: 5rem;
 }
 
 *, *::before, *::after {
@@ -59,7 +61,7 @@ body {
         radial-gradient(circle at 40% 70%, rgba(34, 211, 238, 0.15)  2px, transparent 2px),
         radial-gradient(circle at 70% 80%, rgba(244, 114, 182, 0.15) 2px, transparent 2px);
     background-size: 100px 100px;
-    animation: particles-float 20s linear infinite;
+    animation: particlesFloat 20s linear infinite;
 }
 
 .orb {
@@ -69,15 +71,15 @@ body {
     border-radius: 50%;
     background: var(--color-pink);
     box-shadow: 0 0 12px #ff69b4;
-    animation: orb-float ease-in-out infinite;
+    animation: orbFloat ease-in-out infinite;
 }
 
-@keyframes particles-float {
+@keyframes particlesFloat {
   from { transform: translateY(0); }
   to   { transform: translateY(-100px); }
 }
 
-@keyframes orb-float {
+@keyframes orbFloat {
   0%, 100% {
     transform: translateY(0) scale(1);
     opacity: 0.1;
@@ -86,4 +88,68 @@ body {
     transform: translateY(-30px) scale(1.8);
     opacity: 0.9;
   }
+}
+
+
+.ground {
+    flex-shrink: 0;       
+    height: var(--ground-height);
+    width: 100%;
+    position: relative;
+    z-index: 30;
+    background-color: #022c22;
+    background-image:
+        linear-gradient(45deg, #064e3b 25%, transparent 25%, transparent 75%, #064e3b 75%),
+        linear-gradient(45deg, #064e3b 25%, transparent 25%, transparent 75%, #064e3b 75%);
+    background-size: 32px 32px;
+    background-position: 0 0, 16px 16px;
+    border-top: 4px solid #10b981;
+    box-shadow: 0 -10px 20px rgba(16, 185, 129, 0.2);
+    overflow: visible;
+    transition: filter 0.3s ease;
+}
+
+.binary-strip {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.binary-row {
+    position: absolute;
+    left: 0;
+    white-space: nowrap; 
+    font-family: var(--font-body);
+    font-size: 0.7rem;
+    color: rgba(52, 211, 153, 0.4);
+    animation: scrollBinary linear infinite;
+}
+
+.binary-row:nth-child(1) { 
+    top: 4px;  
+    animation-duration: 70s; 
+}
+
+.binary-row:nth-child(2) { 
+    top: 22px; 
+    animation-duration: 80s; 
+    animation-direction: reverse; 
+}
+
+.binary-row:nth-child(3) { 
+    top: 40px; 
+    animation-duration: 65s; 
+}
+
+.binary-row:nth-child(4) { 
+    top: 58px; 
+    animation-duration: 75s; 
+    animation-direction: reverse; 
+}
+
+@keyframes scrollBinary {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
 }
