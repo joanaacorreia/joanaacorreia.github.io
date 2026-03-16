@@ -222,10 +222,134 @@ function initMonsters() {
         roam();
 
         wrap.addEventListener('click', () => {
+            const state = monsterStates[id];
             if(state.isDead || sectionOpen) return;
             openSection(id, state.x, wrap);
         });
     });
+}
+
+function openSection(id, monsterPos, wrap) {
+    const panel = document.getElementById('panel');
+    const content = document.getElementById('panel-content');
+    const beam = document.getElementById('beam');
+    const title = document.getElementById('title');
+    const particles = document.getElementById('particles');
+
+    const isPink = PINK_SECTIONS.includes(id);
+
+    // player attack
+    window.dispatchEvent(new CustomEvent('player-attack'));
+
+    // mark monster as dead and starts death animation via clone
+    monsterStates[id].isDead = true;
+    const monsterContainer = document.getElementById(`sprite-container-${id}`);
+    const monsterImg = document.getElementById(`monster-sprite-${id}`);
+
+    if (monsterContainer && monsterImg) {
+        swapImg(monsterImg, 'assets/monster-death-spritesheet.png', 'monster-sprite pixelart');
+        monsterContainer.className = 'monster-sprite-container dying';
+        wrap.classList.add('dead');
+
+        setTimeout(() => {
+            monsterContainer.className = 'monster-sprite-container dead';
+        }, 820);
+    }
+
+    // show panel
+    setTimeout(() => {
+        const template = document.getElementById(`content-${id}`);
+        content.innerHTML = '';
+        content.appendChild(template.content.cloneNode(true));
+
+        panel.className = isPink ? 'panel pink opening' : 'panel opening';
+        beam.className = isPink ? 'beam pink opening' : 'beam opening';
+        beam.style.left = `${monsterPos}px`;
+
+        // freeze monsters
+        document.querySelectorAll('.monster-sprite-container').forEach(container => {
+            if (!container.classList.contains('dying') && !container.classList.contains('dead')) {
+                container.style.animationPlayState = 'paused';
+
+                const img = container.querySelector('.monster-sprite');
+                if (img) {
+                    img.style.animationPlayState = 'paused';
+                }
+            }
+        });
+
+        // blur whole background
+        particles.classList.add('blurred');
+
+        title.className = 'title hiding';
+        title.addEventListener('animationend', () => {
+            title.style.visibility = 'hidden';
+        }, { once: true });
+
+        activeMonster = id;
+        sectionOpen = true;
+    }, 400);
+}
+
+function closeSection() {
+    const panel = document.getElementById('panel');
+    const beam = document.getElementById('beam');
+    const title = document.getElementById('title');
+    const particles = document.getElementById('particles');
+
+    panel.classList.replace('opening', 'closing');
+    panel.addEventListener('animationend', () => {
+        panel.className = 'panel hidden';
+    }, { once: true });
+
+    beam.classList.replace('opening', 'closing');
+    beam.addEventListener('animationend', () => {
+        beam.className = 'beam hidden';
+    }, { once: true });
+
+    // revive the dead monster
+    if (activeMonster) {
+        const deadWrap = document.getElementById(`monster-${activeMonster}`);
+        const deadContainer = document.getElementById(`sprite-container-${activeMonster}`);
+        const deadImg = document.getElementById(`monster-sprite-${activeMonster}`);
+
+        if (deadWrap) {
+            deadWrap.classList.remove('dead');
+        }
+
+        if (deadContainer && deadImg) {
+            swapImg(deadImg, 'assets/monster-walk-right-spritesheet.png', 'monster-sprite pixelart');
+            deadContainer.className = 'monster-sprite-container walk-right';
+        }
+
+        // clear isDead so it can roam again
+        if (monsterStates[activeMonster]) {
+            monsterStates[activeMonster].isDead = false;
+            monsterStates[activeMonster].lastDirClass = 'walk-right';
+            monsterStates[activeMonster].dir = 1;
+            monsterStates[activeMonster].walkTimer = Math.floor(Math.random() * 120) + 60;
+        }
+    }     
+
+    // unfreeze monsters
+    document.querySelectorAll('.monster-sprite-container').forEach(container => {
+        container.style.animationPlayState = '';
+        const img = container.querySelector('.monster-sprite');
+        if (img) {
+            img.style.animationPlayState = '';
+        }
+    });
+
+    // unblur whole background
+    particles.classList.remove('blurred');
+
+    title.style.visibility = '';
+    // forces reflow to restart title animation
+    void title.offsetWidth; 
+    title.className = 'title showing';
+
+    activeMonster = null;
+    sectionOpen = false;
 }
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -233,4 +357,6 @@ document.addEventListener("DOMContentLoaded", function() {
     createBinaryStrip();
     initPlayer();
     initMonsters();
+
+    document.getElementById('panel-close').addEventListener('click', closeSection);
 });

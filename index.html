@@ -23,6 +23,34 @@
                 <h1>Joana Correia's Portfolio</h1>
                 <p>Attack the monsters to retrieve the information!</p>
             </div>
+
+            <div class="panel hidden" id="panel">
+                <button class="panel-close" id="panel-close" aria-label="close panel">✖</button>
+                <div class="panel-content" id="panel-content"></div>
+            </div>
+
+            <!-- panel content templates -->
+            <template id="content-about">
+                <h2 class="section-title">ABOUT ME</h2>
+                <p>about me content</p>
+            </template>
+
+            <template id="content-projects">
+                <h2 class="section-title">PROJECTS</h2>
+                <p>projects content</p>
+            </template>
+
+            <template id="content-skills">
+                <h2 class="section-title">SKILLS</h2>
+                <p>skills content</p>
+            </template>
+
+            <template id="content-contact">
+                <h2 class="section-title">CONTACT</h2>
+                <p>contact content</p>
+            </template>
+
+            <div class="beam hidden" id="beam"></div>
         </section>
 
         <div class="ground" id="ground">
@@ -115,18 +143,18 @@
                     </div>
             </div>
         </div>
+    </main>
 
-        <!-- player sprite -->
+    <!-- player sprite -->
         <div class="player" id="player">
             <div class="player-container idle" id="player-container">
                 <img 
-                    src="assets/player_idle.png" 
+                    src="assets/character-spritesheet.png" 
                     alt="Player Sprite" 
                     class="pixelart" 
                     id="player-sprite"/>
             </div>
         </div>
-    </main>
 
     <script src="script.js"></script>
 </body>
