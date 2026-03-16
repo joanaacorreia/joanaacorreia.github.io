@@ -242,3 +242,148 @@ body {
     from { transform: translate3d(0, -377px, 0); }
     to   { transform: translate3d(-1152px, -377px, 0); }
 } 
+
+.player-container.attack-left {
+    bottom: -101px;
+}
+
+.player-container.attack-left img {
+    width: 777px;
+    animation: attackLeft 0.32s steps(6) forwards;
+}
+
+.player-container.attack-right {
+    bottom: -91px;
+}
+
+.player-container.attack-right img {
+    width: 777px;
+    animation: attackRight 0.32s steps(6) forwards;
+}
+
+@keyframes attackLeft {
+    from { transform: translate3d(0, -125px, 0); }
+    to   { transform: translate3d(-777px, -125px, 0); }
+}
+
+@keyframes attackRight {
+    from { transform: translate3d(0, -375px, 0); }
+    to   { transform: translate3d(-777px, -375px, 0); }
+} 
+
+
+.monsters {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: visible;
+    z-index: 1;
+}
+
+.monster-wrap {
+    position: absolute;
+    bottom: 100%;
+    margin-bottom: -11px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    pointer-events: all;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+.monster-pin {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: -100px;
+    animation: pinBop 1.4s ease-in-out infinite;
+}
+
+.monster-pin-bubble {
+    font-family: var(--font-heading);
+    font-size: clamp(0.65rem, 1.5vw, 0.85rem);
+    color: #f9a8d4;
+    background: rgba(20, 5, 30, 0.85);
+    border: 1px solid rgba(236, 72, 153, 0.7);
+    box-shadow: 0 0 8px rgba(236, 72, 153, 0.6);
+    padding: 3px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    text-shadow: 0 0 8px rgba(244, 114, 182, 0.9);
+}
+
+.monster-pin-drop {
+    width: 18px;
+    height: 22px;
+    margin-top: -1px;
+}
+
+@keyframes pinBop {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-6px); }
+}
+
+.monster-sprite-container {
+    width: 287px;
+    height: 224px;
+    overflow: hidden;
+    position: relative;
+    transform: scale(0.563);
+    transform-origin: bottom center;
+}
+
+.monster-sprite {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2590px;
+    height: 100%;
+}
+
+.monster-sprite-container.walk-left .monster-sprite {
+    animation: monsterWalk 0.8s steps(8) infinite;
+}
+
+.monster-sprite-container.walk-right .monster-sprite {
+    animation: monsterWalk 0.8s steps(8) infinite;
+}
+
+@keyframes monsterWalk {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-2296px, 0, 0); }
+} 
+
+.monster-sprite-container.dying,
+.monster-sprite-container.dead {
+    width: 130px;
+    height: 132px;
+    overflow: hidden;
+    transform: scale(0.955);
+    transform-origin: bottom center;
+    margin-bottom: -60px;
+}
+
+.monster-sprite-container.dying .monster-sprite,
+.monster-sprite-container.dead .monster-sprite {
+    width: 780px;
+    height: 100%;
+}
+
+.monster-sprite-container.dying .monster-sprite {
+    animation: monsterDeath 0.8s steps(6) forwards !important;
+}
+
+.monster-sprite-container.dead .monster-sprite {
+    transform: translate3d(-650px, 0, 0);
+}
+
+.monster-wrap.dead .monster-pin {
+    display: none;
+}
+
+@keyframes monsterDeath {
+    from { transform: translate3d(0, 0, 0); }
+    to   { transform: translate3d(-780px, 0, 0); }
+}
