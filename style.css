@@ -178,3 +178,67 @@ body {
     from { transform: translateX(0); }
     to   { transform: translateX(-50%); }
 }
+
+
+.pixelart {
+    image-rendering: pixelated;
+}
+
+.player {
+    position: fixed; 
+    bottom: 5rem;     
+    left: 0;
+    width: 128px;
+    height: 126px;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.player-container {
+    width: 128px;
+    height: 126px;
+    overflow: hidden;   
+    position: absolute;
+    bottom: 0;
+    transform: scale(2);
+    transform-origin: bottom left;
+}
+
+.player-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1152px;   
+}
+
+
+.player-container.idle {
+    bottom: -96px;
+}
+.player-container.idle img {
+    transform: translate3d(0, -252px, 0);
+}
+
+.player-container.walk-left {
+    bottom: -101px;
+}
+.player-container.walk-left img {
+    animation: walkLeft 1s steps(9) infinite;
+}
+
+.player-container.walk-right {
+    bottom: -91px;
+}
+.player-container.walk-right img {
+    animation: walkRight 1s steps(9) infinite;
+}
+
+@keyframes walkLeft {
+    from { transform: translate3d(0, -126px, 0); }
+    to   { transform: translate3d(-1152px, -126px, 0); }
+}
+
+@keyframes walkRight {
+    from { transform: translate3d(0, -377px, 0); }
+    to   { transform: translate3d(-1152px, -377px, 0); }
+} 
