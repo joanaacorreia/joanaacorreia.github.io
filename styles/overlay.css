@@ -1,0 +1,143 @@
+/* ─────────────────────────────────────────────
+   overlay
+───────────────────────────────────────────── */
+
+.sky-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 20;
+    background:
+        radial-gradient(ellipse at 10% 15%,  rgba(160, 40, 140, 0.20) 0%, transparent 45%),
+        radial-gradient(ellipse at 90% 80%,  rgba(90,  30, 180, 0.18) 0%, transparent 45%),
+        radial-gradient(ellipse at 55% 50%,  rgba(60,  10, 100, 0.12) 0%, transparent 60%),
+        rgba(9, 11, 38, 0.88);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 2.25rem 2.75rem 1.5rem;
+    overflow: hidden;
+}
+
+.sky-overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(160, 60, 220, 0.03) 3px,
+        rgba(160, 60, 220, 0.03) 4px
+    );
+}
+
+.sky-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(244, 114, 182, 0.7) 25%,
+        rgba(180, 80, 255, 0.7) 60%,
+        transparent 100%
+    );
+    box-shadow: 0 0 20px 3px rgba(200, 80, 230, 0.3);
+}
+
+.sky-overlay.hidden { 
+    display: none; 
+}
+
+.sky-overlay.opening {
+    display: flex;
+    animation: overlayIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.sky-overlay.closing {
+    display: flex;
+    animation: overlayOut 0.3s ease forwards;
+}
+
+@keyframes overlayIn {
+    from { 
+        opacity: 0; 
+        transform: scale(0.97) translateY(12px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: scale(1) translateY(0); 
+    }
+}
+
+@keyframes overlayOut {
+    from { 
+        opacity: 1; 
+        transform: scale(1) translateY(0); 
+    }
+    to { 
+        opacity: 0; 
+        transform: scale(0.97) translateY(12px); 
+    }
+}
+
+.overlay-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    flex: 1;
+    min-height: 0;
+}
+
+.overlay-content p {
+    color: rgba(230, 210, 245, 0.88);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.overlay-footer {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(244, 114, 182, 0.12);
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+
+/* ─────────────────────────────────────────────
+   revive button
+───────────────────────────────────────────── */
+
+.revive-btn {
+    position: relative;
+    z-index: 2;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.45rem 1.1rem;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--color-pink);
+    background: rgba(87, 26, 56, 0.7);
+    border: 1px solid rgba(244, 114, 182, 0.7);
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 0 8px rgba(244, 114, 182, 0.25);
+    transition: transform 0.15s, box-shadow 0.15s;
+}
+
+.revive-btn:hover {
+    transform: scale(1.04);
+    box-shadow: 0 0 16px rgba(244, 114, 182, 0.5);
+}

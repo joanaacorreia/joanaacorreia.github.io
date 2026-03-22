@@ -1,0 +1,24 @@
+:root {
+    --font-heading: "Pixelify Sans";
+    --font-body: "DotGothic16";
+
+    --color-pink: #f472b6;
+    --color-pink-glow: rgba(244, 114, 182, 0.8);
+    --color-green: #34d399;
+    --color-green-glow: rgba(52, 211, 153, 0.8);
+
+    --ground-height: 5rem;
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background: #0f172a;
+    color: #e2e8f0;
+    overflow: hidden;
+}

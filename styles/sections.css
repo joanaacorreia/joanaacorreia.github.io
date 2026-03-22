@@ -1,0 +1,108 @@
+/* ─────────────────────────────────────────────
+   shared section components
+───────────────────────────────────────────── */
+
+.section-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    width: 100%;
+    height: 100%;
+}
+
+.section-header {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    color: var(--color-pink);
+    margin-bottom: 0.5rem;
+    text-shadow:
+        0 0 10px var(--color-pink-glow),
+        0 0 22px var(--color-pink-glow);
+}
+
+.section-subtitle {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: rgba(200, 160, 230, 0.75);
+    margin-bottom: 0.4rem;
+}
+
+.section-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(244, 114, 182, 0.18);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.06),
+        0 4px 16px rgba(0, 0, 0, 0.3);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.section-card:hover {
+    border-color: rgba(244, 114, 182, 0.38);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.08),
+        0 0 14px rgba(244, 114, 182, 0.12);
+}
+
+.card-label {
+    font-family: var(--font-heading);
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    color: rgba(244, 114, 182, 0.65);
+}
+
+.card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin-top: 0.15rem;
+}
+
+.tag {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    color: rgba(180, 140, 220, 0.9);
+    background: rgba(140, 60, 200, 0.15);
+    border: 1px solid rgba(160, 80, 220, 0.3);
+    border-radius: 3px;
+    padding: 1px 6px;
+}
+
+.status-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.status-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #34d399;
+    box-shadow: 0 0 7px rgba(52, 211, 153, 0.75);
+    animation: statusPulse 2s ease-in-out infinite;
+    flex-shrink: 0;
+}
+
+@keyframes statusPulse {
+    0%, 100% { opacity: 1; }
+    50%       { opacity: 0.45; }
+}
+
+.status-text {
+    font-family: var(--font-heading);
+    font-size: 0.78rem;
+    letter-spacing: 0.1em;
+    color: rgba(52, 211, 153, 0.72);
+}

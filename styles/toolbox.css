@@ -1,0 +1,129 @@
+/* ─────────────────────────────────────────────
+   toolbox
+───────────────────────────────────────────── */
+
+.process-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+.process-step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.1rem 1.1rem 1rem 1.4rem;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.05),
+        0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.process-grid .process-step:nth-child(1),
+.process-grid .process-step:nth-child(2),
+.process-grid .process-step:nth-child(3),
+.process-grid .process-step:nth-child(4) {
+    background: rgba(244, 114, 182, 0.10);
+    border: 1px solid rgba(244, 114, 182, 0.30);
+}
+
+.process-grid .process-step:nth-child(5) {
+    background: rgba(244, 114, 182, 0.14);
+    border: 1px solid rgba(244, 114, 182, 0.38);
+}
+
+.process-grid .process-step:nth-child(6) {
+    background: rgba(52, 211, 153, 0.10);
+    border: 1px solid rgba(52, 211, 153, 0.32);
+}
+
+.process-step:hover {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        0 4px 24px rgba(244, 114, 182, 0.08);
+}
+
+.process-step-debug:hover {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        0 4px 24px rgba(180, 80, 255, 0.08);
+}
+
+.process-step-end:hover {
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.07),
+        0 4px 24px rgba(52, 211, 153, 0.07);
+}
+
+.process-watermark {
+    position: absolute;
+    right: 0.6rem;
+    bottom: -0.4rem;
+    font-family: var(--font-heading);
+    font-size: 4.5rem;
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.02em;
+}
+
+.process-grid .process-step:nth-child(1) .process-watermark,
+.process-grid .process-step:nth-child(2) .process-watermark,
+.process-grid .process-step:nth-child(3) .process-watermark,
+.process-grid .process-step:nth-child(4) .process-watermark { 
+    color: rgba(244, 114, 182, 0.22); 
+}
+
+.process-grid .process-step:nth-child(5) .process-watermark { 
+    color: rgba(244, 114, 182, 0.28); 
+}
+
+.process-grid .process-step:nth-child(6) .process-watermark { 
+    color: rgba(52, 211, 153, 0.22); 
+}
+
+.process-title {
+    font-family: var(--font-heading);
+    font-size: 0.95rem;
+    color: rgba(235, 215, 252, 0.95);
+    position: relative;
+    z-index: 1;
+}
+
+.process-body {
+    font-family: var(--font-body);
+    font-size: 0.82rem !important;
+    color: rgba(200, 178, 240, 0.72) !important;
+    line-height: 1.68 !important;
+    position: relative;
+    z-index: 1;
+}
+
+.process-aside {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    color: rgba(180, 80, 255, 0.45);
+    font-style: italic;
+    position: relative;
+    z-index: 1;
+    margin-top: 0.1rem;
+}
+
+.process-step-debug .process-watermark { 
+    color: rgba(180, 80, 255, 0.22); 
+}
+
+.process-step-debug .process-title { 
+    color: rgba(215, 178, 255, 0.95); 
+}
+
+.process-step-end .process-watermark { 
+    color: rgba(52, 211, 153, 0.22); 
+}
+
+.process-step-end .process-title { 
+    color: rgba(160, 245, 200, 0.92); 
+}
