@@ -2,15 +2,16 @@ let sectionOpen = false;
 let activeMonster = null;
 const monsterStates = {};
 
-// green sections being the default
-const PINK_SECTIONS = ['about', 'skills'];
+// ─────────────────────────────────────────────
+//  particles
+// ─────────────────────────────────────────────
 
 function createParticles() {
-    const particles = document.getElementById("particles");
+    const particles = document.getElementById('particles');
 
     for (let i = 0; i < 30; i++) {
-        const orb = document.createElement("div");
-        orb.className = "orb";
+        const orb = document.createElement('div');
+        orb.className = 'orb';
 
         orb.style.left = `${Math.random() * 100}%`;
         orb.style.top = `${Math.random() * 70}%`;
@@ -21,21 +22,28 @@ function createParticles() {
     }
 }
 
+// ─────────────────────────────────────────────
+//  binary strip
+// ─────────────────────────────────────────────
+
 function createBinaryStrip() {
-    const binaryStrip = document.getElementById("binary-strip");
+    const binaryStrip = document.getElementById('binary-strip');
     // name in binary
-    const name = "01101010 01101111 01100001 01101110 01100001 00100000 01100011 01101111 01110010 01110010 01100101 01101001 01100001";
+    const name = '01101010 01101111 01100001 01101110 01100001 00100000 01100011 01101111 01110010 01110010 01100101 01101001 01100001';
     const text = (name + ' ').repeat(12);
 
     for (let i = 0; i < 4; i++) {
-        const row = document.createElement("div");
-        row.className = "binary-row";
+        const row = document.createElement('div');
+        row.className = 'binary-row';
         row.textContent = text;
         binaryStrip.appendChild(row);
     }
 }
 
-// replaces an img with a fresh clone to reset animation
+// ─────────────────────────────────────────────
+//  swap img to reset animation
+// ─────────────────────────────────────────────
+
 function swapImg(oldImg, newSrc, className) {
     const parent = oldImg.parentNode;
     const newImg = document.createElement('img');
@@ -46,16 +54,19 @@ function swapImg(oldImg, newSrc, className) {
     if (oldImg.alt) newImg.alt = oldImg.alt;
 
     oldImg.remove();
-    // forces browser to recalculate the layout
+    // forces browser to recalculate layout 
     void parent.offsetWidth;
     parent.appendChild(newImg);
-
     return newImg;
 }
 
+// ─────────────────────────────────────────────
+//  player
+// ─────────────────────────────────────────────
+
 function initPlayer() {
-    const player = document.getElementById("player");
-    const container = document.getElementById("player-container");
+    const player = document.getElementById('player');
+    const container = document.getElementById('player-container');
 
     let targetX = window.innerWidth / 2;
     let currentX = targetX;
@@ -63,8 +74,8 @@ function initPlayer() {
     let idleTimer = null;
     let isAttacking = false;
 
-    function getImg() {
-        return document.getElementById('player-sprite');
+    function getImg() { 
+        return document.getElementById('player-sprite'); 
     }
 
     function setIdle() {
@@ -99,10 +110,10 @@ function initPlayer() {
     function loop() {
         const diff = targetX - currentX;
 
-        // math.abs gives absolute value
         if (Math.abs(diff) > 1) {
             currentX += diff * 0.12;
-        } else {
+        } 
+        else {
             currentX = targetX;
         }
 
@@ -114,12 +125,13 @@ function initPlayer() {
     window.addEventListener('mousemove', (e) => {
         if (isAttacking) return;
 
-        // e.clientX gives horizontal position of mouse
         const diff = e.clientX - targetX;
-
-        // only update target if mouse moves more than 10px to prevent jitter
-        if (diff < -10) setWalking('walk-left');
-        else if (diff > 10) setWalking('walk-right');
+        if (diff < -10) {
+            setWalking('walk-left');
+        } 
+        else if (diff > 10) {
+            setWalking('walk-right');
+        }
         targetX = e.clientX;
 
         clearTimeout(idleTimer);
@@ -132,6 +144,10 @@ function initPlayer() {
     loop();
 }
 
+// ─────────────────────────────────────────────
+//  monsters
+// ─────────────────────────────────────────────
+
 function initMonsters() {
     const groundWidth = window.innerWidth;
     const wraps = document.querySelectorAll('.monster-wrap');
@@ -142,21 +158,21 @@ function initMonsters() {
         wrap.style.left = `${spawn}px`;
 
         monsterStates[id] = {
-        x: spawn,
-        dir: 1,
-        speed: 0.4 + Math.random() * 0.5,
-        walkTimer: Math.floor(Math.random() * 120) + 60,
-        pauseTimer: 0,
-        isDead: false,
-        lastDirClass: '',
+            x: spawn,
+            dir: 1,
+            speed: 0.4 + Math.random() * 0.5,
+            walkTimer: Math.floor(Math.random() * 120) + 60,
+            pauseTimer: 0,
+            isDead: false,
+            lastDirClass: '',
         };
 
-        function getContainer() {
-            return document.getElementById(`sprite-container-${id}`);
+        function getContainer() { 
+            return document.getElementById(`sprite-container-${id}`); 
         }
 
-        function getImg() {
-            return document.getElementById(`monster-sprite-${id}`);
+        function getImg() { 
+            return document.getElementById(`monster-sprite-${id}`); 
         }
 
         function roam() {
@@ -164,15 +180,14 @@ function initMonsters() {
 
             requestAnimationFrame(roam);
 
-            if (state.isDead) return;
-            if (sectionOpen) return;
+            if (state.isDead || sectionOpen) return;
 
             if (state.pauseTimer > 0) {
                 state.pauseTimer--;
 
                 const container = getContainer();
                 if (container && state.lastDirClass !== '') {
-                    state.lastDirClass = ''; 
+                    state.lastDirClass = '';
                     container.className = 'monster-sprite-container';
                 }
                 return;
@@ -180,13 +195,13 @@ function initMonsters() {
 
             state.x += state.dir * state.speed;
 
-            // bounce off edges
-            if (state.x < 40) {
-                state.x = 40;
-                state.dir = 1;
-            } else if (state.x > groundWidth - 40) {
-                state.x = groundWidth - 40;
-                state.dir = -1;
+            if (state.x < 40) { 
+                state.x = 40;              
+                state.dir = 1; 
+            }
+            else if (state.x > groundWidth - 40) { 
+                state.x = groundWidth - 40; 
+                state.dir = -1; 
             }
 
             const dirClass = state.dir === -1 ? 'walk-left' : 'walk-right';
@@ -210,7 +225,7 @@ function initMonsters() {
 
             state.walkTimer--;
             if (state.walkTimer <= 0) {
-                state.pauseTimer = Math.floor(Math.random() *80) + 40;
+                state.pauseTimer = Math.floor(Math.random() * 80) + 40;
                 state.walkTimer = Math.floor(Math.random() * 120) + 60;
                 // 50% chance to flip direction when pausing
                 if (Math.random() < 0.5) {
@@ -223,25 +238,26 @@ function initMonsters() {
 
         wrap.addEventListener('click', () => {
             const state = monsterStates[id];
-            if(state.isDead || sectionOpen) return;
-            openSection(id, state.x, wrap);
+            if (state.isDead || sectionOpen) return;
+            openSection(id, wrap);
         });
     });
 }
 
-function openSection(id, monsterPos, wrap) {
-    const panel = document.getElementById('panel');
-    const content = document.getElementById('panel-content');
-    const beam = document.getElementById('beam');
+// ─────────────────────────────────────────────
+//  open section
+// ─────────────────────────────────────────────
+
+function openSection(id, wrap) {
+    const overlay = document.getElementById('sky-overlay');
+    const content = document.getElementById('overlay-content');
     const title = document.getElementById('title');
     const particles = document.getElementById('particles');
 
-    const isPink = PINK_SECTIONS.includes(id);
-
-    // player attack
+    // 1. player attacks
     window.dispatchEvent(new CustomEvent('player-attack'));
 
-    // mark monster as dead and starts death animation via clone
+    // 2. kill the clicked monster
     monsterStates[id].isDead = true;
     const monsterContainer = document.getElementById(`sprite-container-${id}`);
     const monsterImg = document.getElementById(`monster-sprite-${id}`);
@@ -256,58 +272,54 @@ function openSection(id, monsterPos, wrap) {
         }, 820);
     }
 
-    // show panel
+    // 3. hide all other monsters
+    document.querySelectorAll('.monster-wrap').forEach(w => {
+        if (w !== wrap) w.classList.add('others-hidden');
+    });
+
+    // 4. show the overlay after the attack animation
     setTimeout(() => {
+        // populate content
         const template = document.getElementById(`content-${id}`);
         content.innerHTML = '';
         content.appendChild(template.content.cloneNode(true));
 
-        panel.className = isPink ? 'panel pink opening' : 'panel opening';
-        beam.className = isPink ? 'beam pink opening' : 'beam opening';
-        beam.style.left = `${monsterPos}px`;
-
-        // freeze monsters
-        document.querySelectorAll('.monster-sprite-container').forEach(container => {
-            if (!container.classList.contains('dying') && !container.classList.contains('dead')) {
-                container.style.animationPlayState = 'paused';
-
-                const img = container.querySelector('.monster-sprite');
-                if (img) {
-                    img.style.animationPlayState = 'paused';
-                }
-            }
-        });
-
-        // blur whole background
-        particles.classList.add('blurred');
-
+        // fade and blur whole background
         title.className = 'title hiding';
         title.addEventListener('animationend', () => {
             title.style.visibility = 'hidden';
         }, { once: true });
+
+        particles.style.filter = 'blur(2px)';
+        particles.style.transition = 'filter 0.4s ease';
+
+        // open the overlay
+        overlay.className = 'sky-overlay opening';
 
         activeMonster = id;
         sectionOpen = true;
     }, 400);
 }
 
+// ─────────────────────────────────────────────
+//  close section
+// ─────────────────────────────────────────────
+
 function closeSection() {
-    const panel = document.getElementById('panel');
-    const beam = document.getElementById('beam');
+    const overlay = document.getElementById('sky-overlay');
     const title = document.getElementById('title');
     const particles = document.getElementById('particles');
 
-    panel.classList.replace('opening', 'closing');
-    panel.addEventListener('animationend', () => {
-        panel.className = 'panel hidden';
+    // close overlay 
+    overlay.className = 'sky-overlay closing';
+    overlay.addEventListener('animationend', () => {
+        overlay.className = 'sky-overlay hidden';
     }, { once: true });
 
-    beam.classList.replace('opening', 'closing');
-    beam.addEventListener('animationend', () => {
-        beam.className = 'beam hidden';
-    }, { once: true });
+    // unblur background elements
+    particles.style.filter = '';
 
-    // revive the dead monster
+    // revive dead monster
     if (activeMonster) {
         const deadWrap = document.getElementById(`monster-${activeMonster}`);
         const deadContainer = document.getElementById(`sprite-container-${activeMonster}`);
@@ -322,41 +334,38 @@ function closeSection() {
             deadContainer.className = 'monster-sprite-container walk-right';
         }
 
-        // clear isDead so it can roam again
+        // reset monster state
         if (monsterStates[activeMonster]) {
             monsterStates[activeMonster].isDead = false;
             monsterStates[activeMonster].lastDirClass = 'walk-right';
             monsterStates[activeMonster].dir = 1;
             monsterStates[activeMonster].walkTimer = Math.floor(Math.random() * 120) + 60;
         }
-    }     
+    }
 
-    // unfreeze monsters
-    document.querySelectorAll('.monster-sprite-container').forEach(container => {
-        container.style.animationPlayState = '';
-        const img = container.querySelector('.monster-sprite');
-        if (img) {
-            img.style.animationPlayState = '';
-        }
+    // show all monsters again
+    document.querySelectorAll('.monster-wrap').forEach(w => {
+        w.classList.remove('others-hidden');
     });
 
-    // unblur whole background
-    particles.classList.remove('blurred');
-
+    // restore title
     title.style.visibility = '';
-    // forces reflow to restart title animation
-    void title.offsetWidth; 
+    void title.offsetWidth;
     title.className = 'title showing';
 
     activeMonster = null;
     sectionOpen = false;
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+// ─────────────────────────────────────────────
+//  boot
+// ─────────────────────────────────────────────
+
+document.addEventListener('DOMContentLoaded', () => {
     createParticles();
     createBinaryStrip();
     initPlayer();
     initMonsters();
 
-    document.getElementById('panel-close').addEventListener('click', closeSection);
+    document.getElementById('revive-btn').addEventListener('click', closeSection);
 });

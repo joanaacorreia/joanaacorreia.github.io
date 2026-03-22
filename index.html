@@ -7,7 +7,7 @@
     <title>Joana Correia</title>
     <link rel="stylesheet" href="style.css">
 
-    <!-- fonts -->
+    <!-- —— fonts —— -->
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400;700&family=DotGothic16&display=swap" rel="stylesheet"/>
@@ -24,80 +24,295 @@
                 <p>Attack the monsters to retrieve the information!</p>
             </div>
 
-            <div class="panel hidden" id="panel">
-                <button class="panel-close" id="panel-close" aria-label="close panel">✖</button>
-                <div class="panel-content" id="panel-content"></div>
+            <div class="sky-overlay hidden" id="sky-overlay">
+                <div class="overlay-content" id="overlay-content"></div>
+                <div class="overlay-footer">
+                    <button class="revive-btn" id="revive-btn">↑ Revive monster</button>
+                </div>
             </div>
 
-            <!-- panel content templates -->
+            <!-- —— about section —— -->
             <template id="content-about">
-                <h2 class="section-title">ABOUT ME</h2>
-                <p>about me content</p>
+                <div class="section-layout">
+
+                    <div class="section-header">
+                        <h2 class="section-title">ABOUT ME</h2>
+                        <p class="about-quote">"Yesterday I was clever, so I wanted to change the world. Today I am wise, so I am changing myself." <span>~ Rumi</span></p>
+                    </div>
+
+                    <p class="about-intro">
+                        Computer engineering student with a focus on robotics and embedded systems, with growing interests in cybersecurity. Drawn to the logic behind things — how they're built, why they work, and whether there's a better way to do it.
+                    </p>
+
+                    <div class="about-top-row">
+                        <div class="about-prose-col">
+                            <div class="about-divider"><span class="about-divider-label">BACKGROUND</span></div>
+                            <div class="about-prose-columns">
+                                <p class="about-prose">Curiosity was always there — dismantling things mentally before physically, wondering what was inside the machines, theorising about their structure and how they worked. Growing up around someone deep in the field made it concrete. By the time I built my first robotic arm in secondary school, the direction was obvious.</p>
+                                <p class="about-prose">Funnily enough, the first real encounter with cybersecurity was being the threat. Trying to install a Bratz cursor at age eight somehow resulted in enough viruses and malware that my brother — who went on to work in the field — was almost impressed at the damage. Years later, a professor told me girls didn't belong in computer engineering. I got 100% in his electronics exam — the grade he spent lectures insisting nobody ever got.</p>
+                            </div>
+                        </div>
+
+                        <div class="section-card about-spark-card">
+                            <span class="card-label">⚔ WORKING ON</span>
+                            <p>Currently focused on algorithms and data structures — specifically the obsession with writing things the most efficient way possible.</p>
+                        </div>
+                    </div>
+                </div>
             </template>
 
+            <!-- —— projects section —— -->
             <template id="content-projects">
-                <h2 class="section-title">PROJECTS</h2>
-                <p>projects content</p>
+                <div class="section-layout">
+
+                    <div class="section-header">
+                        <h2 class="section-title">PROJECTS</h2>
+                        <p class="section-subtitle">Some univeristy and personal projects of mine</p>
+                    </div>
+
+                    <div class="quest-log">
+                        <div class="quest-entry quest-featured">
+                            <div class="quest-meta">
+                                <span class="quest-rank">★★★</span>
+                                <span class="card-label">MAIN QUEST</span>
+                                <div class="card-tags">
+                                    <span class="tag">C++</span>
+                                    <span class="tag">Arduino</span>
+                                    <span class="tag">ESP8266</span>
+                                    <span class="tag">IoT</span>
+                                    <span class="tag">HTML/CSS/JS</span>
+                                </div>
+                            </div>
+                            <h3 class="quest-title"><a href="https://github.com/joanaacorreia/mission-control-hmi" target="_blank" class="quest-link">Mission Control HMI</a></h3>
+                            <p class="quest-desc">A university project — an embedded system that simulates a bomb defusal mission through a series of logic challenges. Built on a distributed architecture with an Arduino Uno handling real-time hardware control and an ESP8266 serving a live web interface over Wi-Fi, synchronising game state between physical components and browser in real time.</p>
+                        </div>
+
+                        <div class="quest-entry quest-featured">
+                            <div class="quest-meta">
+                                <span class="quest-rank">★★★</span>
+                                <span class="card-label">MAIN QUEST</span>
+                                <div class="card-tags">
+                                    <span class="tag">Java</span>
+                                    <span class="tag">Data Structures</span>
+                                    <span class="tag">Algorithms</span>
+                                </div>
+                            </div>
+                            <h3 class="quest-title">DEISI World Meter</h3>
+                            <p class="quest-desc">A university project — a Java application that ingests demographic datasets of countries and cities, builds efficient in-memory data structures, and responds to statistical queries with a focus on algorithmic optimisation.</p>
+                        </div>
+
+                        <div class="quest-entry">
+                            <div class="quest-meta">
+                                <span class="quest-rank">★★☆</span>
+                                <span class="card-label">SIDE QUEST</span>
+                                <div class="card-tags">
+                                    <span class="tag">Python</span>
+                                    <span class="tag">MediaPipe</span>
+                                    <span class="tag">OpenCV</span>
+                                </div>
+                            </div>
+                            <h3 class="quest-title"><a href="https://github.com/joanaacorreia/domain-expansion-recognition" target="_blank" class="quest-link">Domain Expansion Recognition</a></h3>
+                            <p class="quest-desc">A Python program that uses MediaPipe and OpenCV to detect hand signs in real time and trigger the corresponding Jujutsu Kaisen domain expansion animation and audio. Still in progress.</p>
+                        </div>
+                    </div>
+                </div>
             </template>
 
+            <!-- —— skills section —— -->
             <template id="content-skills">
-                <h2 class="section-title">SKILLS</h2>
-                <p>skills content</p>
+                <div class="section-layout">
+
+                    <div class="section-header">
+                        <h2 class="section-title">SKILLS</h2>
+                        <p class="section-subtitle">My current stack of tools and technologies</p>
+                    </div>
+
+                    <div class="skill-branches">
+
+                        <div class="skill-branch">
+                            <span class="branch-label">Languages</span>
+                            <div class="branch-items">
+                                <span class="branch-item">C</span>
+                                <span class="branch-item">C++</span>
+                                <span class="branch-item">Java</span>
+                                <span class="branch-item">Python</span>
+                                <span class="branch-item">JavaScript</span>
+                                <span class="branch-item">Assembly</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-branch">
+                            <span class="branch-label">Web</span>
+                            <div class="branch-items">
+                                <span class="branch-item">HTML</span>
+                                <span class="branch-item">CSS</span>
+                                <span class="branch-item">React.js</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-branch">
+                            <span class="branch-label">Robotics & Embedded</span>
+                            <div class="branch-items">
+                                <span class="branch-item">ROS2</span>
+                                <span class="branch-item">Arduino</span>
+                                <span class="branch-item">Raspberry Pi</span>
+                                <span class="branch-item">Gazebo</span>
+                                <span class="branch-item">OpenCV</span>
+                                <span class="branch-item">MediaPipe</span>
+                            </div>
+                        </div>
+
+                        <div class="skill-branch">
+                            <span class="branch-label">Tools & Workflow</span>
+                            <div class="branch-items">
+                                <span class="branch-item">Git</span>
+                                <span class="branch-item">Docker</span>
+                                <span class="branch-item">VS Code</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="skill-learning-row">
+                        <span class="learning-label">Currently learning</span>
+                        <div class="learning-items">
+                            <span class="learning-item">SQL</span>
+                            <span class="learning-item">Network Security</span>
+                            <span class="learning-item">Linux CLI</span>
+                        </div>
+                    </div>
+
+                </div>
             </template>
 
+            <!-- —— contact section —— -->
             <template id="content-contact">
-                <h2 class="section-title">CONTACT</h2>
-                <p>contact content</p>
+                <div class="section-layout section-layout-contact">
+
+                    <div class="section-header">
+                        <h2 class="section-title">CONTACT</h2>
+                    </div>
+
+                    <div class="terminal-box">
+                        <div class="terminal-line">
+                            <span class="term-prompt">joana@portfolio:~$</span>
+                            <span class="term-cmd">cat links.txt</span>
+                        </div>
+
+                        <div class="terminal-links">
+                            <a class="terminal-link" href="https://github.com/joanaacorreia" target="_blank">
+                                <span class="term-key">github</span>
+                                <span class="term-sep">→</span>
+                                <span class="term-val">github.com/joanaacorreia</span>
+                            </a>
+
+                            <a class="terminal-link" href="#" target="_blank">
+                                <span class="term-key">linkedin</span>
+                                <span class="term-sep">→</span>
+                                <span class="term-val">linkedin.com/in/joanamarisacorreia</span>
+                            </a>
+                        </div>
+
+                        <div class="terminal-line">
+                            <span class="term-prompt">joana@portfolio:~$</span>
+                            <span class="term-cursor">▋</span>
+                        </div>
+                    </div>
+
+                    <div class="status-line">
+                        <span class="status-dot"></span>
+                        <span class="status-text">available for opportunities</span>
+                    </div>
+                </div>
             </template>
 
-            <div class="beam hidden" id="beam"></div>
+            <!-- —— toolbox section —— -->
+            <template id="content-toolbox">
+                <div class="section-layout">
+
+                    <div class="section-header">
+                        <h2 class="section-title">TOOLBOX</h2>
+                        <p class="section-subtitle">How I work</p>
+                    </div>
+
+                    <div class="process-grid">
+
+                        <div class="process-step">
+                            <span class="process-watermark">01</span>
+                            <span class="process-title">Review &amp; Plan</span>
+                            <p class="process-body">Start by understanding the problem — solo or with colleagues. Think through possibilities, constraints, and edge cases. Albeit not everything gets figured out here, it's a start.</p>
+                        </div>
+
+                        <div class="process-step">
+                            <span class="process-watermark">02</span>
+                            <span class="process-title">Sketch Architecture</span>
+                            <p class="process-body">Before writing a single line of code, the logic gets drawn out. Flowcharts, diagrams, pen and paper — whatever maps the structure clearly.</p>
+                        </div>
+
+                        <div class="process-step">
+                            <span class="process-watermark">03</span>
+                            <span class="process-title">Set Up &amp; Build</span>
+                            <p class="process-body">Environments configured, tools ready. Then build — iteratively, not all at once. More questions come up here than anywhere else.</p>
+                        </div>
+
+                        <div class="process-step process-step-debug">
+                            <span class="process-watermark">!</span>
+                            <span class="process-title">When Something Breaks</span>
+                            <p class="process-body">Debugging starts with reading the error, tracing the logic, searching online. If that fails — pen and paper, a professor, or a colleague from an older year.</p>
+                            <span class="process-aside">can happen at any point in the process</span>
+                        </div>
+
+                        <div class="process-step">
+                            <span class="process-watermark">04</span>
+                            <span class="process-title">Optimise &amp; Clean Up</span>
+                            <p class="process-body">Once it works, make it better. Optimise, cut redundancy, keep the code clean and organised. An outside perspective at this stage often surfaces constraints, edge cases, or questions that proximity to the code makes it easy to miss.</p>
+                        </div>
+
+                        <div class="process-step process-step-end">
+                            <span class="process-watermark">✓</span>
+                            <span class="process-title">Document &amp; README</span>
+                            <p class="process-body">Write the README. If it's a uni project, write the report too. The work isn't done until someone else could pick it up and understand it.</p>
+                        </div>
+
+                    </div>
+                </div>
+            </template>
         </section>
 
+        <!-- —— ground —— -->
         <div class="ground" id="ground">
             <div class="binary-strip" id="binary-strip"></div>
 
-            <!-- monsters -->
+            <!-- —— monster sprites —— -->
             <div class="monsters" id="monsters">
 
                 <div class="monster-wrap" id="monster-about" data-id="about" data-label="ABOUT ME">
                     <div class="monster-pin">
                         <span class="monster-pin-bubble">ABOUT ME</span>
                         <svg class="monster-pin-drop" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path 
-                                d="M9 0C4.03 0 0 4.03 0 9C0 15.75 9 22 9 22C9 22 18 15.75 18 9C18 4.03 13.97 0 9 0Z"
-                                fill="rgba(236,72,153,0.85)"
-                                stroke="rgba(244,114,182,0.9)"
-                                stroke-width="1"
+                            <path d="M9 0C4.03 0 0 4.03 0 9C0 15.75 9 22 9 22C9 22 18 15.75 18 9C18 4.03 13.97 0 9 0Z"
+                                fill="rgba(236,72,153,0.85)" stroke="rgba(244,114,182,0.9)" stroke-width="1"
                                 style="filter: drop-shadow(0 0 6px rgba(236,72,153,0.8))"/>
                         </svg>
                     </div>
                     <div class="monster-sprite-container" id="sprite-container-about">
-                        <img 
-                            src="assets/monster-walk-right-spritesheet.png"
-                            alt="About me monster"
-                            class="monster-sprite pixelart"
-                            id="monster-sprite-about"/>
+                        <img src="assets/monster-walk-right-spritesheet.png" alt="About me monster"
+                            class="monster-sprite pixelart" id="monster-sprite-about"/>
                     </div>
-                </div> 
+                </div>
 
                 <div class="monster-wrap" id="monster-projects" data-id="projects" data-label="PROJECTS">
                     <div class="monster-pin">
                         <span class="monster-pin-bubble">PROJECTS</span>
                         <svg class="monster-pin-drop" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path 
-                                d="M9 0C4.03 0 0 4.03 0 9C0 15.75 9 22 9 22C9 22 18 15.75 18 9C18 4.03 13.97 0 9 0Z"
-                                fill="rgba(236,72,153,0.85)"
-                                stroke="rgba(244,114,182,0.9)"
-                                stroke-width="1"
+                            <path d="M9 0C4.03 0 0 4.03 0 9C0 15.75 9 22 9 22C9 22 18 15.75 18 9C18 4.03 13.97 0 9 0Z"
+                                fill="rgba(236,72,153,0.85)" stroke="rgba(244,114,182,0.9)" stroke-width="1"
                                 style="filter: drop-shadow(0 0 6px rgba(236,72,153,0.8))"/>
                         </svg>
                     </div>
                     <div class="monster-sprite-container" id="sprite-container-projects">
-                        <img
-                            src="assets/monster-walk-right-spritesheet.png"
-                            alt="Projects monster"
-                            class="monster-sprite pixelart"
-                            id="monster-sprite-projects"/>
+                        <img src="assets/monster-walk-right-spritesheet.png" alt="Projects monster"
+                            class="monster-sprite pixelart" id="monster-sprite-projects"/>
                     </div>
                 </div>
 
@@ -105,20 +320,14 @@
                     <div class="monster-pin">
                         <span class="monster-pin-bubble">SKILLS</span>
                         <svg class="monster-pin-drop" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path 
-                                d="M9 0C4.03 0 0 4.03 0 9C0 15.75 9 22 9 22C9 22 18 15.75 18 9C18 4.03 13.97 0 9 0Z"
-                                fill="rgba(236,72,153,0.85)"
-                                stroke="rgba(244,114,182,0.9)"
-                                stroke-width="1"
+                            <path d="M9 0C4.03 0 0 4.03 0 9C0 15.75 9 22 9 22C9 22 18 15.75 18 9C18 4.03 13.97 0 9 0Z"
+                                fill="rgba(236,72,153,0.85)" stroke="rgba(244,114,182,0.9)" stroke-width="1"
                                 style="filter: drop-shadow(0 0 6px rgba(236,72,153,0.8))"/>
                         </svg>
                     </div>
                     <div class="monster-sprite-container" id="sprite-container-skills">
-                        <img
-                            src="assets/monster-walk-right-spritesheet.png"
-                            alt="Skills monster"
-                            class="monster-sprite pixelart"
-                            id="monster-sprite-skills"/>
+                        <img src="assets/monster-walk-right-spritesheet.png" alt="Skills monster"
+                            class="monster-sprite pixelart" id="monster-sprite-skills"/>
                     </div>
                 </div>
 
@@ -126,35 +335,45 @@
                     <div class="monster-pin">
                         <span class="monster-pin-bubble">CONTACT</span>
                         <svg class="monster-pin-drop" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path 
-                                d="M9 0C4.03 0 0 4.03 0 9C0 15.75 9 22 9 22C9 22 18 15.75 18 9C18 4.03 13.97 0 9 0Z"
-                                fill="rgba(236,72,153,0.85)"
-                                stroke="rgba(244,114,182,0.9)"
-                                stroke-width="1"
+                            <path d="M9 0C4.03 0 0 4.03 0 9C0 15.75 9 22 9 22C9 22 18 15.75 18 9C18 4.03 13.97 0 9 0Z"
+                                fill="rgba(236,72,153,0.85)" stroke="rgba(244,114,182,0.9)" stroke-width="1"
                                 style="filter: drop-shadow(0 0 6px rgba(236,72,153,0.8))"/>
                         </svg>
                     </div>
                     <div class="monster-sprite-container" id="sprite-container-contact">
-                        <img
-                            src="assets/monster-walk-right-spritesheet.png"
-                            alt="Contact monster"
-                            class="monster-sprite pixelart"
-                            id="monster-sprite-contact"/>
+                        <img src="assets/monster-walk-right-spritesheet.png" alt="Contact monster"
+                            class="monster-sprite pixelart" id="monster-sprite-contact"/>
                     </div>
+                </div>
+
+                <div class="monster-wrap" id="monster-toolbox" data-id="toolbox" data-label="TOOLBOX">
+                    <div class="monster-pin">
+                        <span class="monster-pin-bubble">TOOLBOX</span>
+                        <svg class="monster-pin-drop" viewBox="0 0 18 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M9 0C4.03 0 0 4.03 0 9C0 15.75 9 22 9 22C9 22 18 15.75 18 9C18 4.03 13.97 0 9 0Z"
+                                fill="rgba(236,72,153,0.85)" stroke="rgba(244,114,182,0.9)" stroke-width="1"
+                                style="filter: drop-shadow(0 0 6px rgba(236,72,153,0.8))"/>
+                        </svg>
+                    </div>
+                    <div class="monster-sprite-container" id="sprite-container-toolbox">
+                        <img src="assets/monster-walk-right-spritesheet.png" alt="Toolbox monster"
+                            class="monster-sprite pixelart" id="monster-sprite-toolbox"/>
+                    </div>
+                </div>
+
             </div>
+
         </div>
+
     </main>
 
-    <!-- player sprite -->
-        <div class="player" id="player">
-            <div class="player-container idle" id="player-container">
-                <img 
-                    src="assets/character-spritesheet.png" 
-                    alt="Player Sprite" 
-                    class="pixelart" 
-                    id="player-sprite"/>
-            </div>
+    <!-- —— player sprite —— -->
+    <div class="player" id="player">
+        <div class="player-container idle" id="player-container">
+            <img src="assets/character-spritesheet.png" alt="Player Sprite"
+                class="pixelart" id="player-sprite"/>
         </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
