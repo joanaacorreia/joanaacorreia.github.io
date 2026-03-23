@@ -19,9 +19,14 @@ function initCarousel() {
 
     function showMonster(index) {
         wraps.forEach((wrap, i) => {
+            const container = wrap.querySelector('.monster-sprite-container');
             if (i === index) {
                 wrap.classList.remove('carousel-hidden');
                 wrap.classList.add('carousel-active');
+                // show idle frame
+                if (container) {
+                    container.className = 'monster-sprite-container';
+                }
             } else {
                 wrap.classList.add('carousel-hidden');
                 wrap.classList.remove('carousel-active');

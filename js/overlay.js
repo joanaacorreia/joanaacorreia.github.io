@@ -122,4 +122,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initMonsters();
 
     document.getElementById('revive-btn').addEventListener('click', closeSection);
+    document.getElementById('mobile-close-btn').addEventListener('click', closeSection);
 });
