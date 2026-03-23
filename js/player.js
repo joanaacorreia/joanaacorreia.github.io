@@ -72,6 +72,25 @@ function initPlayer() {
         idleTimer = setTimeout(setIdle, 150);
     });
 
+    window.addEventListener('touchmove', (e) => {
+        if (isAttacking) return;
+
+        // only consider first finger registered on screen in touches list
+        const touch = e.touches[0];
+        const diff = touch.clientX - targetX;
+
+        if (diff < -10) {
+            setWalking('walk-left');
+        }
+        else if (diff > 10) {
+            setWalking('walk-right');
+        }
+        targetX = touch.clientX;
+
+        clearTimeout(idleTimer);
+        idleTimer = setTimeout(setIdle, 150);
+    }, { passive: true });
+
     window.addEventListener('player-attack', attack);
 
     setIdle();
