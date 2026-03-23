@@ -86,10 +86,11 @@ function initMonsters() {
 
         roam();
 
-        wrap.addEventListener('click', () => {
+        const spriteContainer = document.getElementById(`sprite-container-${id}`);
+        spriteContainer.addEventListener('click', () => {
             const state = monsterStates[id];
             if (state.isDead || sectionOpen) return;
             openSection(id, wrap);
-        });
+});
     });
 }

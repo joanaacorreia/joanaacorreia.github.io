@@ -132,7 +132,7 @@
     flex-direction: column;
     align-items: center;
     cursor: pointer;
-    pointer-events: all;
+    pointer-events: none;
     transform: translateX(-50%);
     z-index: 2;
     transition: opacity 0.3s ease;
@@ -150,6 +150,8 @@
     position: relative;
     transform: scale(0.563);
     transform-origin: bottom center;
+    pointer-events: all;
+    cursor: pointer;
 }
 
 .monster-sprite {
@@ -166,6 +168,7 @@
     align-items: center;
     margin-bottom: -100px;
     animation: pinBop 1.4s ease-in-out infinite;
+    pointer-events: none;
 }
 
 .monster-pin-bubble {
