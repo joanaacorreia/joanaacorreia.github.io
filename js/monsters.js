@@ -82,6 +82,19 @@ function initMonsters() {
                     state.dir *= -1;
                 }
             }
+
+            // prevent monsters from overlapping
+            const minDistance = 80;
+            Object.entries(monsterStates).forEach(([otherId, otherState]) => {
+                if (otherId === id || otherState.isDead) return;
+
+                const distance = state.x - otherState.x;
+                if (Math.abs(distance) < minDistance) {
+                    // push away from the other
+                    state.dir = distance > 0 ? 1 : -1;
+                    state.x += state.dir * state.speed * 2;
+                }
+            });
         }
 
         roam();
