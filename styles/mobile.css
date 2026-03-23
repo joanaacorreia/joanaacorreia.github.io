@@ -1,0 +1,84 @@
+@media (max-width: 768px) {
+
+    .carousel-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: 60px;
+        z-index: 10;
+        pointer-events: all;
+    }
+
+    .carousel-arrow {
+        background: rgba(20, 5, 30, 0.85);
+        border: 1px solid rgba(236, 72, 153, 0.7);
+        box-shadow: 0 0 8px rgba(236, 72, 153, 0.6);
+        color: #f9a8d4;
+        font-size: 2rem;
+        width: 36px;
+        height: 36px;
+        border-radius: 4px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--font-heading);
+        line-height: 1;
+    }
+
+    .carousel-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(244, 114, 182, 0.3);
+        border: 1px solid rgba(236, 72, 153, 0.5);
+        transition: background 0.2s;
+    }
+
+    .carousel-dot.active {
+        background: var(--color-pink);
+        box-shadow: 0 0 6px var(--color-pink-glow);
+    }
+
+    .carousel-dots {
+        display: flex;
+        gap: 6px;
+        align-items: center;
+    }
+
+    /* hide carousel on desktop */
+    .carousel-controls {
+        display: none;
+    }
+}
+
+/* show carousel only on mobile */
+@media (max-width: 768px) {
+    .carousel-controls {
+        display: flex;
+    }
+
+    /* hide all monsters except active one */
+    .monster-wrap.carousel-hidden {
+        display: none;
+    }
+
+    /* center the active monster */
+    .monster-wrap.carousel-active {
+        left: 50% !important;
+    }
+
+    /* mobile full screen overlay */
+    .sky-overlay {
+        border-radius: 0;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}
