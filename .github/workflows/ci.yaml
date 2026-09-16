@@ -1,0 +1,107 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: ${{ matrix.label }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    env:
+      TOOLS: ${{ github.workspace }}/..
+      OUTPUT: ${{ github.workspace }}/../output.txt
+      NO_COLOR: "1"
+
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - label: Formatação
+            packages: prettier@3
+            files: "**/*.html **/*.css **/*.js"
+            command: prettier --check "**/*.{html,css,js}"
+          - label: HTML
+            packages: html-validate@9
+            files: "**/*.html"
+            command: html-validate --config "$TOOLS/htmlvalidate.json" "**/*.html"
+          - label: CSS
+            packages: stylelint@16 stylelint-config-standard@37
+            files: "**/*.css"
+            command: stylelint "**/*.css" --config "$TOOLS/stylelint.json"
+          - label: JavaScript
+            packages: eslint@9 @eslint/js@9 globals
+            files: "**/*.js"
+            command: eslint . --config "$TOOLS/eslint.config.mjs" --no-config-lookup
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+
+      - name: Instalar ferramentas
+        run: |
+          npm install --prefix "$TOOLS" --no-audit --no-fund --loglevel=error ${{ matrix.packages }}
+          echo "$TOOLS/node_modules/.bin" >> "$GITHUB_PATH"
+
+      - name: Preparar configurações
+        run: |
+          echo '{"extends":["stylelint-config-standard"]}' > "$TOOLS/stylelint.json"
+          cat > "$TOOLS/htmlvalidate.json" <<'EOF'
+          {
+            "root": true,
+            "extends": ["html-validate:recommended"],
+            "rules": {
+              "doctype-style": ["error", { "style": "lowercase" }],
+              "void-style": "off"
+            }
+          }
+          EOF
+          cat > "$TOOLS/eslint.config.mjs" <<'EOF'
+          import js from "@eslint/js";
+          import globals from "globals";
+          export default [
+            js.configs.recommended,
+            { languageOptions: { globals: globals.browser } }
+          ];
+          EOF
+
+      - name: ${{ matrix.label }}
+        id: analysis
+        shell: bash
+        run: |
+          shopt -s globstar nullglob
+          matches=(${{ matrix.files }})
+          if [ ${#matches[@]} -eq 0 ]; then
+            echo "skipped=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          ${{ matrix.command }} 2>&1 | tee "$OUTPUT"
+
+      - name: Resumo
+        if: '!cancelled()'
+        run: |
+          {
+            if [ "${{ steps.analysis.outputs.skipped }}" = "true" ]; then
+              echo "## Sem ficheiros para analisar em ${{ matrix.label }}"
+            elif [ "${{ steps.analysis.outcome }}" = "success" ]; then
+              echo "## Sem problemas em ${{ matrix.label }}"
+            else
+              echo "## Problemas encontrados em ${{ matrix.label }}"
+              echo '```'
+              cat "$OUTPUT"
+              echo '```'
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+

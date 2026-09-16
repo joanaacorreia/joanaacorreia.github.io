@@ -1,0 +1,38 @@
+{
+  "name": "DIW 26/27",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "sidthesloth.html5-boilerplate",
+        "esbenp.prettier-vscode",
+        "ms-vscode.live-server",
+        "-GitHub.copilot",
+        "-GitHub.copilot-chat"
+      ],
+      "settings": {
+        "chat.disableAIFeatures": true,
+        "chat.commandCenter.enabled": false,
+        "github.copilot.enable": { "*": false },
+        "files.autoSave": "onFocusChange",
+        "editor.formatOnSave": false,
+        "[html]": {
+          "editor.defaultFormatter": "esbenp.prettier-vscode",
+          "editor.formatOnSave": true
+        },
+        "livePreview.autoRefreshPreview": "On All Changes in Editor",
+        "livePreview.openPreviewTarget": "Embedded Preview",
+        "files.trimTrailingWhitespace": true,
+        "files.insertFinalNewline": true,
+        "eslint.useFlatConfig": true,
+        "stylelint.validate": ["css"]
+      }
+    }
+  },
+
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": { "label": "Live Preview", "onAutoForward": "notify" }
+  }
+}
