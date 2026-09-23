@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cambridge</title>
+
+    <style>
+      body {
+        font-family: sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+      }
+
+      nav a {
+        margin-right: 15px;
+        text-decoration: none;
+        color: #0056b3;
+      }
+
+      /* TABLE STYLES */
+      table {
+        justify-self: center;
+        width: 80%;
+        border-collapse: collapse; /* removes borders between cells */
+        margin-top: 20px;
+        font-family: Arial, sans-serif;
+      }
+
+      /* headers and data cells */
+      th,
+      td {
+        border: 1px solid #bdc3c7;
+        padding: 15px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #ecf0f1;
+        color: #2c3e50;
+      }
+
+      /* main table title */
+      .titulo-tabela {
+        background-color: #2c3e50;
+        color: white;
+        text-align: center;
+        font-size: 20px;
+      }
+
+      /* category cells */
+      .categoria-rowspan {
+        background-color: #34495e;
+        color: white;
+        font-weight: bold;
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Cambridge</h1>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="local.html">Localização</a>
+        <a href="multimedia.html">Multimédia</a>
+        <a href="info.html">Informação</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Informações</h2>
+
+      <p>
+        Cambridge é uma cidade fascinante onde a rica história medieval se
+        encontra com a inovação tecnológica moderna. Mundialmente conhecida pela
+        sua excelência académica, é uma cidade vibrante que atrai estudantes,
+        investigadores e visitantes de todo o mundo.
+      </p>
+
+      <table>
+        <!-- th: table header -->
+        <th colspan="4" class="titulo-tabela">
+          Regras e Proibições Históricas de Cambridge
+        </th>
+
+        <!-- tr: table row -->
+        <tr>
+          <th>Categoria</th>
+          <th>Regra Arcaica / Proibição</th>
+          <th>Contexto Histórico e Significado</th>
+          <th>Penalização Absurda / Estatuto Atual</th>
+        </tr>
+
+        <tr>
+          <th rowspan="3" style="background-color: white">Conduta e Lazer</th>
+          <!-- td: table data -->
+          <td>A Proibição do Jogo das Belindas (Gude)</td>
+          <td>
+            Os estudantes de licenciatura estão estritamente proibidos de jogar
+            às belindas nos degraus de pedra do Senate House.
+          </td>
+          <td>
+            Confiscação das belindas e humilhação pública. Atualmente, os
+            estudantes recriam a regra a título lúdico para fins de
+            beneficência.
+          </td>
+        </tr>
+
+        <tr>
+          <td>O Decreto Contra a Vadiagem (1660)</td>
+          <td>
+            Os estudantes estavam proibidos de "vadiar e coscuvilhar de quarto
+            em quarto" para evitar a ociosidade e a distração dos estudos.
+          </td>
+          <td>
+            Punição através da obrigatoriedade de assistência a missas matinais
+            adicionais e vigilância académica rigorosa.
+          </td>
+        </tr>
+
+        <tr>
+          <td>Proibição do Futebol e Desportos "Turbulentos"</td>
+          <td>
+            No século XVII, o futebol foi oficialmente banido para os
+            estudantes, sendo classificado como um "exercício turbulento mais
+            adequado para rústicos do que para académicos".
+          </td>
+          <td>
+            Repreensão pública e suspensão interna da faculdade (uma ironia,
+            considerando que a universidade viria a ajudar a inventar as regras
+            do futebol moderno em 1848).
+          </td>
+        </tr>
+
+        <tr>
+          <th rowspan="2" style="background-color: white">
+            Território e Direitos
+          </th>
+          <td>A Regra do Raio de Três Milhas</td>
+          <td>
+            Todos os estudantes são legalmente obrigados a pernoitar num raio de
+            3 milhas (cerca de 4,8 km) a partir da Igreja de Great St Mary's
+            durante 59 noites por período letivo.
+          </td>
+          <td>
+            Processo disciplinar académico grave. Embora pareça inacreditável,
+            esta métrica de controlo permanece ativamente em vigor nas
+            faculdades nos dias de hoje.
+          </td>
+        </tr>
+
+        <tr>
+          <td>O Monopólio dos Cisnes-Mudos</td>
+          <td>
+            Apenas os docentes e investigadores (Fellows) do St John's College
+            têm permissão legal para caçar e consumir cisnes-mudos não marcados.
+          </td>
+          <td>
+            Qualquer outra pessoa que o faça incorre em coimas pesadas e
+            potenciais acusações de traição, visto que todos os restantes cisnes
+            pertencem à Família Real Britânica.
+          </td>
+        </tr>
+      </table>
+    </main>
+
+    <footer>
+      <p>DIW 2026</p>
+    </footer>
+  </body>
+</html>
