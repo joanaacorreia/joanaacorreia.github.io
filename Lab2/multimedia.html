@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Multimédia</title>
+
+    <style>
+      /* FONTS */
+      @import url("https://fonts.googleapis.com/css2?family=Marck+Script:wght@400;700&display=swap");
+
+      .fotografias {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .fotografias img {
+        width: 300px;
+        border-radius: 20px;
+      }
+
+      /* poem title and author */
+      .poem div {
+        font-family: "Marck Script", cursive;
+        font-size: 30px;
+        font-weight: 600;
+      }
+
+      /* poem contents */
+      .poem div > div {
+        font-size: 25px;
+        font-weight: 400;
+      }
+
+      .poem div > div p:nth-child(4n) {
+        color: rgb(208, 79, 172);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Cambridge</h1>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="local.html">Localização</a>
+        <a href="multimedia.html">Multimédia</a>
+        <a href="info.html">Informação</a>
+      </nav>
+    </header>
+
+    <main>
+      <h2>Multimédia</h2>
+
+      <p>Nesta página encontra conteúdos multimédia.</p>
+
+      <p>
+        <a href="#fotos">Fotografias</a>
+        <a href="#video">Vídeo</a>
+        <a href="#poesia">Poesia</a>
+      </p>
+
+      <section class="album">
+        <h3 id="fotos">Fotografias</h3>
+        <div class="fotografias">
+          <img src="images/cows.jpg" alt="Cows" />
+          <img src="images/fitzwilliam-museum.jpg" alt="Fitzwilliam Museum" />
+          <img src="images/river-cam.jpg" alt="River Cam" />
+          <img src="images/snow.jpg" alt="Snow" />
+          <img src="images/students-laying.jpg" alt="Students" />
+          <img src="images/sunset-houses.jpg" alt="Sunset Houses" />
+          <img src="images/town.jpg" alt="Town" />
+          <img src="images/uni-life.jpg" alt="Uni Life" />
+        </div>
+      </section>
+
+      <section class="vlog">
+        <h3 id="video">Vídeo</h3>
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/5M61xe53Zko?si=DXgmvXasHgcpphcL"
+          title="YouTube video player"
+          frameborder="0"
+          allow="
+            accelerometer;
+            autoplay;
+            clipboard-write;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture;
+            web-share;
+          "
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </section>
+
+      <section class="poem">
+        <h3 id="poesia">Poesia</h3>
+        <div>
+          <p>"Taking Leave of Cambridge Again"</p>
+          <p>By Xu Zhi Mo</p>
+          <div>
+            <p>Softly I am leaving,</p>
+            <p>Just as softly as I came;</p>
+            <p>I softly wave goodbye</p>
+            <p>To the clouds in the western sky.</p>
+            <br />
+
+            <p>The golden willows by the riverside</p>
+            <p>Are young brides in the setting sun;</p>
+            <p>Their glittering reflections on the shimmering river</p>
+            <p>Keep undulating in my heart.</p>
+            <br />
+
+            <p>The green tape grass rooted in the soft mud</p>
+            <p>Sways leisurely in the water;</p>
+            <p>I am willing to be such a waterweed</p>
+            <p>In the gentle flow of the River Cam.</p>
+            <br />
+
+            <p>That pool in the shade of elm trees</p>
+            <p>Holds not clear spring water, but a rainbow</p>
+            <p>Crumpled in the midst of duckweeds,</p>
+            <p>Where rainbow-like dreams settle.</p>
+            <br />
+
+            <p>To seek a dream? Go punting with a long pole,</p>
+            <p>Upstream to where green grass is greener,</p>
+            <p>With the punt laden with starlight,</p>
+            <p>And sing out loud in its radiance.</p>
+            <br />
+
+            <p>Yet now I cannot sing out loud,</p>
+            <p>Peace is my farewell music;</p>
+            <p>Even crickets are now silent for me,</p>
+            <p>For Cambridge this evening is silent.</p>
+            <br />
+
+            <p>Quietly I am leaving,</p>
+            <p>Just as quietly as I came;</p>
+            <p>Gently waving my sleeve,</p>
+            <p>I am not taking away a single cloud.</p>
+            <br />
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>DIW 2026</p>
+    </footer>
+  </body>
+</html>
