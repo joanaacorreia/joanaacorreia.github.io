@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Marck+Script:wght@400;700&display=swap");
+
+/* =========================================
+   GENERAL STRUCTURE
+========================================= */
+body {
+  font-family: sans-serif;
+  background-color: #e0e0e0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+h1 {
+  background-color: palevioletred;
+  color: white;
+  text-align: center;
+  margin: 0;
+  padding: 20px;
+}
+
+h3 {
+    text-align: center;
+}
+
+nav {
+  background-color: #333333;
+  text-align: center;
+  padding: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+header img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+main {
+  background-color: white;
+  padding: 30px;
+  margin: 30px 10%;
+  flex: 1;
+}
+
+footer {
+  background-color: #333333;
+  color: white;
+  text-align: center;
+  padding: 15px;
+  margin: 0;
+}
+
+/* =========================================
+   MAIN PAGE
+========================================= */
+main img.imagem-home {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* =========================================
+   INFORMATION PAGE
+========================================= */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+}
+
+th, td {
+  border: 1px solid #bdc3c7;
+  padding: 15px;
+  text-align: left;
+}
+
+th {
+  background-color: #ecf0f1;
+  color: #2c3e50;
+}
+
+.titulo-tabela {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+}
+
+.categoria-rowspan {
+  background-color: #34495e;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+.curiosities-title {
+  margin-top: 40px;
+  color: #2c3e50;
+}
+
+.curiosities-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.curiosity-card {
+  flex: 1 1 300px;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-top: 5px solid palevioletred;
+  transition: transform 0.2s ease;
+}
+
+.curiosity-card:hover {
+  transform: translateY(-5px);
+}
+
+.curiosity-card h4 {
+  margin-top: 0;
+  color: #2c3e50;
+  font-size: 18px;
+}
+
+.curiosity-card p {
+  margin-bottom: 0;
+  color: #444;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* =========================================
+   MULTIMEDIA PAGE
+========================================= */
+.fotografias {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.fotografias img {
+  width: 300px;
+  border-radius: 20px;
+}
+
+.poem {
+  text-align: center;
+}
+
+.poem div {
+  font-family: "Marck Script", cursive;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.poem div > div {
+  font-size: 25px;
+  font-weight: 400;
+}
+
+.poem div > div p:nth-child(4n) {
+  color: rgb(208, 79, 172);
+}
+
+iframe {
+  display: block;
+  margin: 0 auto;
+}
