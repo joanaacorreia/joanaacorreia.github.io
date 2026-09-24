@@ -21,11 +21,11 @@ h1 {
 }
 
 h3 {
-    text-align: center;
+  text-align: center;
 }
 
 nav {
-  background-color: #333333;
+  background-color: #333;
   text-align: center;
   padding: 15px;
 }
@@ -55,7 +55,7 @@ main {
 }
 
 footer {
-  background-color: #333333;
+  background-color: #333;
   color: white;
   text-align: center;
   padding: 15px;
@@ -127,7 +127,7 @@ th {
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 10%);
   border-top: 5px solid palevioletred;
   transition: transform 0.2s ease;
 }
@@ -154,8 +154,7 @@ th {
 ========================================= */
 .fotografias {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: center;
   gap: 20px;
 }
@@ -181,10 +180,11 @@ th {
 }
 
 .poem div > div p:nth-child(4n) {
-  color: rgb(208, 79, 172);
+  color: rgb(208 79 172);
 }
 
 iframe {
   display: block;
   margin: 0 auto;
+  border: none;
 }
