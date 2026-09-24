@@ -85,7 +85,8 @@ table {
   font-family: Arial, sans-serif;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #bdc3c7;
   padding: 15px;
   text-align: left;
