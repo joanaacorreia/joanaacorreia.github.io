@@ -1,7 +1,272 @@
-body {
-  background-color: #ffb5f1;
+@import url("https://fonts.googleapis.com/css2?family=Sixtyfour&display=swap");
+
+/*========================================
+  GENERAL STRUCTURE
+  ========================================*/
+html {
+  background-color: black;
+  scroll-padding-top: 10vh; /* header height */
+  scroll-behavior: smooth;
 }
 
+* {
+  font-family: sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+header,
+footer,
+section,
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 5vh;
+}
+
+header {
+  backdrop-filter: blur(10px);
+  position: sticky;
+  height: 10vh;
+  top: 0;
+  z-index: 1000;
+}
+
+section:nth-child(1) {
+  min-height: 90vh;
+  background: black;
+  position: relative;
+  overflow: hidden;
+}
+
+section:nth-child(2) {
+  min-height: 100vh;
+  background: #f04b61;
+  color: #e0f052;
+  padding: 10vh 0;
+}
+
+section:nth-child(3) {
+  min-height: 80vh;
+  background: #467cc7;
+  color: #f691c1;
+  padding: 10vh 0;
+}
+
+footer {
+  height: 10vh;
+  background: black;
+  color: white;
+}
+
+/*========================================
+  HERO PAGE
+  ========================================*/
+.hero-video,
 img {
-  width: 300px;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  z-index: 100;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 70vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+nav a {
+  color: white;
+  font-size: 1rem;
+  font-family: Sixtyfour;
+  text-decoration: none;
+  padding: 15px 30px;
+}
+
+nav a:hover {
+  background-color: white;
+  color: black;
+  border: 2px solid white;
+}
+
+.landing-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 200;
+  pointer-events: none;
+}
+
+.landing-text {
+  position: absolute;
+  top: 8vh;
+  left: 5vw;
+  color: white;
+  text-align: left;
+}
+
+.landing-text h1 {
+  font-family: "Sixtyfour";
+  font-size: 3rem;
+  margin: 0;
+}
+
+.landing-text h2 {
+  font-family: sans-serif;
+  font-weight: 300;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+
+.cta-button {
+  position: absolute;
+  bottom: 10vh;
+  right: 5vw;
+  pointer-events: auto;
+  padding: 15px 30px;
+  color: white;
+  font-family: "Sixtyfour";
+  font-size: 1rem;
+  text-decoration: none;
+  border: 2px solid white;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: white;
+  color: black;
+}
+
+/*========================================
+  PROJECTS PAGE
+  ========================================*/
+#projetos {
+  width: 100%;
+  display: flex;
+  align-items: center; /* aligns cards */
+  text-align: center; /* aligns text */
+  flex-direction: column;
+  gap: 50px;
+}
+
+.projetos-header h2 {
+  font-family: "Sixtyfour";
+  font-size: 4rem;
+}
+
+.projetos-header p {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+
+.project-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 30px;
+  width: 90vw;
+  flex-wrap: wrap;
+}
+
+.lab-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  width: 250px;
+  padding: 30px 20px;
+  border: 3px solid #e0f052;
+  background-color: transparent;
+  color: #e0f052;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.lab-card h3 {
+  font-family: "Sixtyfour";
+  font-size: 1.5rem;
+}
+
+.lab-card:hover {
+  background-color: #e0f052;
+  color: #f04b61;
+  transform: translateY(-10px);
+}
+
+/*========================================
+  SUBJECT PAGE
+  ========================================*/
+
+.subject-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 5vw;
+  width: 80vw;
+  max-width: 1000px;
+}
+
+.subject-text {
+  flex: 1;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.subject-text a {
+  color: #e0f052;
+  text-decoration: underline;
+}
+
+.subject-text ul {
+  margin: 20px 0 20px 40px;
+  text-transform: uppercase;
+}
+
+.diw {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.diw .diw-image {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  z-index: 1;
+  object-fit: contain;
+}
+
+/*========================================
+  MEDIA QUERY
+  ========================================*/
+@media (max-width: 768px) {
+  .subject-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .subject-text {
+    text-align: center;
+  }
+
+  .subject-text ul {
+    list-style-position: inside;
+    margin: 20px 0;
+  }
 }

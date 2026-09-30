@@ -9,40 +9,78 @@
 
   <body>
     <header>
-      <h1>Primeira Página Web!</h1>
+      <nav>
+        <ul>
+          <li><a href="#inicio">INÍCIO</a></li>
+          <li><a href="#projetos">PROJETOS</a></li>
+          <li><a href="#cadeira">CADEIRA</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main>
-      <p>Eis a minha primeira página Web!</p>
+      <section id="inicio">
+        <video autoplay loop muted playsinline class="hero-video">
+          <source src="assets/diw-swirl.mp4" type="video/mp4" />
+          O teu browser não suporta a tag de vídeo.
+        </video>
 
-      <p>
-        Na Unidade Curricular de
-        <a
-          href="https://moodle.ensinolusofona.pt/course/view.php?id=11232"
-          target="_blank"
-        >
-          Desenvolvimento de Interfaces Web
-        </a>
-        abordaremos as seguintes tecnologias Web &#127760;:
-      </p>
+        <div class="landing-content">
+          <div class="landing-text">
+            <h1>Joana</h1>
+            <h1>Correia</h1>
+            <h2>Portfólio da Cadeira de DIW!</h2>
+          </div>
 
-      <ul>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>React e Next.js</li>
-      </ul>
+          <a href="#projetos" class="cta-button">Ver Projetos</a>
+        </div>
+      </section>
 
-      <p>Iremos criar soluções criativas!</p>
+      <section id="projetos">
+        <div class="project-header">
+          <h2>Labs</h2>
+          <p>Alguns exercícios desenvolvidos ao longo da UC</p>
+        </div>
+        <div class="project-content">
+          <a href="Lab1/index.html" class="lab-card">
+            <h3>Lab 1</h3>
+          </a>
 
-      <nav>
-        <ul>
-          <li><a href="Lab1/index.html">Lab1</a></li>
-          <li><a href="Lab2/index.html">Lab2</a></li>
-        </ul>
-      </nav>
+          <a href="Lab2/index.html" class="lab-card">
+            <h3>Lab 2</h3>
+          </a>
 
-      <img src="images/diw.svg" alt="Desenvolvimento de Interfaces Web" />
+          <a href="Lab3/index.html" class="lab-card">
+            <h3>Lab 3</h3>
+          </a>
+        </div>
+      </section>
+
+      <section id="cadeira">
+        <div class="subject-content">
+
+          <div class="subject-text">
+            <p>
+              "Na unidade curricular de
+              <a target="_blank"
+              href="https://moodle.ensinolusofona.pt/course/view.php?id=27320">
+              Desenvolvimento de Interfaces Web
+              </a>
+              abordaremos as seguintes tecnologias web &#127760;:"
+            </p>
+            <ul>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>React e Node.js</li>
+            </ul>
+            <p>Iremos criar soluções criativas!</p>
+          </div>
+
+          <div class="diw">
+            <img src="assets/diw.svg" alt="DIW image" class="diw-image">
+          </div>
+      </section>
     </main>
 
     <footer>
