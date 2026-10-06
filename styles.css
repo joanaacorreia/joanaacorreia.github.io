@@ -253,7 +253,7 @@ nav a:hover {
 /* ========================================
   MEDIA QUERY
   ======================================== */
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .subject-content {
     flex-direction: column;
     text-align: center;
