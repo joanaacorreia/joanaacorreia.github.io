@@ -1,0 +1,18 @@
+body {
+  background-color: white;
+  font-family: Arial, sans-serif;
+  padding: 30px;
+}
+
+button {
+  margin-right: 5px;
+}
+
+#escrever {
+  width: 300px;
+  height: 30px;
+}
+
+#cor {
+  width: 150px;
+}
