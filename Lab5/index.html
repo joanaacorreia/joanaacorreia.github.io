@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pompompurin's Events</title>
+    <title>Lab 5</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,7 +16,7 @@
   </head>
   <header>
       <div class="nav-container">
-        <div class="logo">Pompompurin Lab</div>
+        <div class="logo">Diw</div>
         <nav>
           <ul>
             <li><a href="#hero">home</a></li>
@@ -31,6 +31,7 @@
         <div class="hero-content">
           <img src="images/pompom.gif" alt="Pompompurin" class="hero-img" />
           <h1>Lab Five</h1>
+          <p>Scroll Down ↓</p>
         </div>
       </section>
 
@@ -42,24 +43,33 @@
         <div class="events-grid">
 
           <div class="event-card">
-            <h3>1. Passa por aqui!</h3>
-            <p>Hover over the box to reveal a secret.</p>
+            <h3>Passa por aqui!</h3>
             <div id="hover-target" class="interactive-box">Hover over me!</div>
           </div>
 
           <div class="event-card">
-            <h3>2. Pinta-me</h3>
-            <p>Click the buttons to change colors.</p>
+            <h3 id="paint-title">Pinta-me</h3>
+            <div class="color-picker-container">
+              <div id="pink-button" class="color-swatch pink-swatch"></div>
+              <div id="purple-button" class="color-swatch purple-swatch"></div>
+              <div id="yellow-button" class="color-swatch yellow-swatch"></div>
+            </div>
           </div>
 
           <div class="event-card">
-            <h3>3. Experimenta escrever</h3>
-            <p>Type to see the magic happen.</p>
+            <h3>Experimenta escrever</h3>
+            <input type="text" id="text-box" class="interactive-box" placeholder="Type here..." />
           </div>
 
           <div class="event-card">
-            <h3>4. Escolha uma cor</h3>
-            <p>Change the background atmosphere.</p>
+            <h3>Escolha uma cor</h3>
+            <select id="theme-selector" class="interactive-box">
+              <option value="">-- Choose a colour --</option>
+              <option value="#BDB2FF">Kuromi Purple</option>
+              <option value="#FF9CEE">My Melody Pink</option>
+              <option value="#A0E8AF">Keroppi Green</option>
+              <option value="#FDFD96">Pompompurin Yellow</option>
+            </select>
           </div>
 
         </div>
