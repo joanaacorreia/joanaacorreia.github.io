@@ -91,3 +91,12 @@ resetButton.addEventListener("click", () => {
     localStorage.setItem("counterDisplay", currentCount);
     counterDisplay.textContent = currentCount;
 })
+
+// event 8
+const timer = document.getElementById("auto-counter-display");
+let seconds = 0;
+
+setInterval(() => {
+    seconds++;
+    timer.textContent = `Seconds: ${seconds}`;
+}, 1000);
