@@ -11,21 +11,14 @@ interactiveBox.addEventListener("mouseleave", () => {
 
 // event 2
 const title = document.getElementById("paint-title");
-const pinkButton = document.getElementById("pink-button");
-const purpleButton = document.getElementById("purple-button");
-const yellowButton = document.getElementById("yellow-button");
+const swatchButtons = document.querySelectorAll(".colour-swatch");
 
-pinkButton.addEventListener("click", () => {
-    title.style.color = "hotpink";
-})
-
-purpleButton.addEventListener("click", () => {
-    title.style.color = "#BDB2FF";
-})
-
-yellowButton.addEventListener("click", () => {
-    title.style.color = "#FDFD96";
-})
+swatchButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const colour = btn.dataset.color;
+        title.style.color = colour;
+    })
+});
 
 // event 3
 const textBox = document.getElementById("text-box");
