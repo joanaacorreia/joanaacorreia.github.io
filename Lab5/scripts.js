@@ -45,3 +45,18 @@ flexSelector.addEventListener("change", () => {
     const chosenFlex = flexSelector.value;
     flexContainer.style.flexDirection = chosenFlex;
 })
+
+// event 6
+const form = document.getElementById("user-form");
+const nameInput = document.getElementById("name-input");
+const ageInput = document.getElementById("age-input");
+const formOutput = document.getElementById("form-output");
+
+form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const insertedName = nameInput.value;
+    const insertedAge = ageInput.value;
+
+    formOutput.textContent = `Olá, a/o ${insertedName} tem ${insertedAge} anos!`;
+})
