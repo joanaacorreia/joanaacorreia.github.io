@@ -14,25 +14,58 @@
 
     <link rel="stylesheet" href="styles.css" />
   </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="#events">events</a></li>
-          <li><a href="#more-events">some more events</a></li>
-        </ul>
-      </nav>
+  <header>
+      <div class="nav-container">
+        <div class="logo">Pompompurin Lab</div>
+        <nav>
+          <ul>
+            <li><a href="#hero">home</a></li>
+            <li><a href="#events-section">events</a></li>
+          </ul>
+        </nav>
+      </div>
     </header>
 
     <main>
-      <section id="events">
-        <img src="images/pompom.gif" alt="Pompompurin" />
+      <section id="hero">
+        <div class="hero-content">
+          <img src="images/pompom.gif" alt="Pompompurin" class="hero-img" />
+          <h1>Lab Five</h1>
+        </div>
       </section>
 
-      <section id="more-events"></section>
+      <section id="events-section">
+        <div class="section-header">
+          <h2>JavaScript Events</h2>
+        </div>
+
+        <div class="events-grid">
+
+          <div class="event-card">
+            <h3>1. Passa por aqui!</h3>
+            <p>Hover over the box to reveal a secret.</p>
+            <div id="hover-target" class="interactive-box">Hover over me!</div>
+          </div>
+
+          <div class="event-card">
+            <h3>2. Pinta-me</h3>
+            <p>Click the buttons to change colors.</p>
+          </div>
+
+          <div class="event-card">
+            <h3>3. Experimenta escrever</h3>
+            <p>Type to see the magic happen.</p>
+          </div>
+
+          <div class="event-card">
+            <h3>4. Escolha uma cor</h3>
+            <p>Change the background atmosphere.</p>
+          </div>
+
+        </div>
+      </section>
     </main>
 
     <footer>lab 5 - diw 2026</footer>
-    </footer>
   </body>
 </html>
