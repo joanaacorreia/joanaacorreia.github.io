@@ -60,3 +60,34 @@ form.addEventListener("submit", (e) => {
 
     formOutput.textContent = `Olá, a/o ${insertedName} tem ${insertedAge} anos!`;
 })
+
+// event 7
+const counterDisplay = document.getElementById("counter-value");
+const incrementButton = document.getElementById("btn-increment");
+const decrementButton = document.getElementById("btn-decrement");
+const resetButton = document.getElementById("btn-reset");
+
+if (!localStorage.getItem("counterDisplay")) {
+    localStorage.setItem("counterDisplay", 0);
+}
+
+let currentCount = Number(localStorage.getItem("counterDisplay"));
+counterDisplay.textContent = currentCount;
+
+incrementButton.addEventListener("click", () => {
+    currentCount++;
+    localStorage.setItem("counterDisplay", currentCount);
+    counterDisplay.textContent = currentCount;
+})
+
+decrementButton.addEventListener("click", () => {
+    currentCount--;
+    localStorage.setItem("counterDisplay", currentCount);
+    counterDisplay.textContent = currentCount;
+})
+
+resetButton.addEventListener("click", () => {
+    currentCount = 0;
+    localStorage.setItem("counterDisplay", currentCount);
+    counterDisplay.textContent = currentCount;
+})

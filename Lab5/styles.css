@@ -296,3 +296,29 @@ nav a:hover {
   font-size: 1.1rem;
   min-height: 24px;
 }
+
+.counter-display {
+  font-family: 'Borel', cursive;
+  font-size: 4rem;
+  color: #3b86c4;
+  margin: 20px 0;
+}
+
+.counter-controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.calc-btn {
+  font-size: 1.5rem;
+  padding: 10px 20px;
+  background-color: #BDB2FF;
+  color: white;
+  border: none;
+}
+
+.reset-btn {
+  background-color: #f4f4f4;
+  color: #666;
+}
