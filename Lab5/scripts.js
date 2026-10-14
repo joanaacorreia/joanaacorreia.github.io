@@ -32,9 +32,16 @@ textBox.addEventListener("input", () => {
 // event 4
 const themeSelector = document.getElementById("theme-selector");
 
-themeSelector.addEventListener("change", () => {
-    const chosenTheme = themeSelector.value;
+themeSelector.addEventListener("change", function() {
+    let chosenTheme = this.value;
     document.body.style.background = chosenTheme;
 })
 
 // event 5
+const flexSelector = document.getElementById("flex-selector");
+const flexContainer = document.getElementById("flex-container");
+
+flexSelector.addEventListener("change", () => {
+    const chosenFlex = flexSelector.value;
+    flexContainer.style.flexDirection = chosenFlex;
+})
