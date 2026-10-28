@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coleção de Cromos</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <h1>Coleção de Cromos</h1>
+      <p>Organiza e gere a tua coleção de cromos.</p>
+    </header>
+
+    <main>
+      <section id="colecao">
+        <h2>A minha coleção</h2>
+        <h3>Total de cromos: <span id="total-cromos">0</span></h3>
+        <ul id="lista-colecao"></ul>
+      </section>
+
+      <section id="registar">
+        <h2>Registar novo cromo</h2>
+
+        <form>
+          <label for="number-input">Número do cromo</label>
+
+          <input
+            type="number"
+            id="number-input"
+            placeholder="Ex: 25"
+            min="1"
+            required
+            autofocus
+          />
+
+          <input type="submit" id="submit-input" value="Registar Cromo" />
+        </form>
+      </section>
+
+      <section id="repetidos">
+        <h2>Cromos repetidos</h2>
+        <h3>Total de repetidos: <span id="total-repetidos">0</span></h3>
+        <ul id="lista-repetidos"></ul>
+      </section>
+    </main>
+
+    <footer>2026, ULusófona</footer>
+
+    <script src="scripts.js"></script>
+  </body>
+</html>
