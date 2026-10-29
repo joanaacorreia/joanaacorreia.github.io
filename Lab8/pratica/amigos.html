@@ -1,0 +1,199 @@
+<!-- COPIADO DA CODEPEN DO PROF -->
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amigos</title>
+  </head>
+  <body>
+    <!-- FETCH DE DADOS COM TRATAMENTO DE ERRO (catch) -->
+    <h1>
+      <a href="https://amigos.pw.deisi.ulusofona.pt/" target="_blank">
+        API amigos
+      </a>
+    </h1>
+
+    <h2>Dados "crus"</h2>
+    <ul></ul>
+
+    <!-- FETCH GET AMIGO -->
+    <h1>Informação obtida para o registo com id</h1>
+    <p></p>
+
+    <!-- FETCH POST AMIGO -->
+    <h1>Cria novo registo</h1>
+    <input type="text" id="nome" placeholder="insira o nome" />
+    <input type="number" id="idade" placeholder="insira a idade" />
+    <button>Registar</button>
+    <aside></aside>
+
+    <!-- FETCH PUT AMIGO -->
+    <button>Alterar registo com id = 3</button>
+    <p></p>
+
+    <!-- FETCH DELETE AMIGO -->
+    <input type="number" placeholder="insira o id do amigo" />
+    <button>Apagar amigo</button>
+    <p></p>
+  </body>
+
+  <script>
+    // FETCH DE DADOS COM TRATAMENTO DE ERRO (catch)
+    // A. Variaveis
+    const ul = document.querySelector("ul");
+
+    // B. fetch de dados
+    fetch("https://amigos.pw.deisi.ulusofona.pt/amigos/")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Erro HTTP:
+                         ${response.status},
+                         ${response.statusText}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        renderiza(data);
+      })
+      .catch((error) => console.log(error.message));
+
+    // C. Funções auxiliares
+    function renderiza(listaAmigos) {
+      listaAmigos.forEach((amigo) => {
+        const li = document.createElement("li");
+        li.textContent = `${amigo.nome}, ${amigo.idade} anos (Registo com id: ${amigo.id})`;
+        ul.append(li);
+      });
+    }
+
+    // FETCH GET AMIGO
+    // Variaveis
+    node_p = document.querySelector("p");
+
+    //
+    // fetch de dados
+    function obterAmigo(id) {
+      fetch(`https://amigos.pw.deisi.ulusofona.pt/amigos/${id}/`)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          node_p.textContent = `${data.nome},
+                            ${data.idade} anos
+                            (id: ${data.id})`;
+        })
+        .catch((error) => (node_p.textContent = "Erro"));
+    }
+
+    obterAmigo(90);
+
+    // FETCH POST AMIGO
+    // variaveis
+    const el_nome = document.querySelector("#nome");
+    const el_idade = document.querySelector("#idade");
+    const el_button = document.querySelector("button");
+    const el_aside = document.querySelector("aside");
+
+    //event handler com PoST para criar um amigo
+    function criarNovo() {
+      fetch("https://amigos.pw.deisi.ulusofona.pt/amigos/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          nome: el_nome.value,
+          idade: Number(el_idade.value),
+        }),
+      })
+        .then((response) => {
+          console.log("response.ok:", response.ok);
+          console.log("response.status: ", response.status);
+          console.log("response.statusText: ", response.statusText);
+
+          if (!response.ok) {
+            throw new Error(
+              `Erro HTTP: ${response.status}, ${response.statusText}`,
+            );
+          }
+
+          return response.json();
+        })
+        .then((data) => {
+          console.log("data:", data);
+          el_aside.textContent = "Registo Criado";
+        })
+        .catch((error) => {
+          console.error("Erro:", error.message);
+          el_aside.textContent = "Erro: " + error.message;
+        });
+    }
+
+    // Event listener
+    el_button.onclick = criarNovo;
+
+    // FETCH PUT AMIGO
+    // Variaveis
+    node_button = document.querySelector("button");
+    node_p = document.querySelector("p");
+
+    id_amigo = 3;
+    dados_amigo = {
+      nome: "Julia",
+      idade: 19,
+    };
+
+    // Event handler com PUT - alterar os dados de um amigo
+    function alterarDados() {
+      fetch(`https://amigos.pw.deisi.ulusofona.pt/amigos/${id_amigo}/`, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(dados_amigo),
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`Erro HTTP:
+                          ${response.status},
+                          ${response.statusText}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          node_p.textContent = `Dados de amigo alterados:
+                          ${data.nome},  ${data.idade}`;
+        })
+        .catch((error) => {
+          node_p.textContent = "Erro";
+        });
+    }
+
+    //
+    // Event listener
+    node_button.onclick = alterarDados;
+
+    // FETCH DELETE AMIGO
+    const node_input = document.querySelector("input");
+    const node_button = document.querySelector("button");
+    const node_p = document.querySelector("p");
+
+    // DELETE - apagar um amigo
+    function apagarAmigo() {
+      id = node_input.value;
+      fetch(`https://amigos.pw.deisi.ulusofona.pt/amigos/${id}/`, {
+        method: "DELETE",
+      })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(
+              `Erro HTTP: ${response.status}, ${response.statusText}`,
+            );
+          }
+          node_p.textContent = "Amigo apagado com sucesso!";
+        })
+        .catch((error) => (node_p.textContent = `Erro: ${error.message}`));
+    }
+
+    node_button.addEventListener("click", () => apagarAmigo());
+  </script>
+</html>
